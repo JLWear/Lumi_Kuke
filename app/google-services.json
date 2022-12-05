@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "5417944648",
+    "project_id": "lumi-kuke",
+    "storage_bucket": "lumi-kuke.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:5417944648:android:ad44088cc065300018ba7d",
+        "android_client_info": {
+          "package_name": "com.example.lumi_kuke"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "5417944648-crrel2mgncososa3tmamqnljbgfurkqv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCBEI9Saxf4ByFM4qczT_CN2WXyg7ee-c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "5417944648-crrel2mgncososa3tmamqnljbgfurkqv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

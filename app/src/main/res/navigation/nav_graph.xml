@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginRegisterChoiceActivity2">
+
+    <activity
+        android:id="@+id/signUpActivity"
+        android:name="com.example.lumi_kuke.SignUpActivity"
+        android:label="activity_sign_up"
+        tools:layout="@layout/activity_sign_up" />
+    <activity
+        android:id="@+id/loginRegisterChoiceActivity2"
+        android:name="com.example.lumi_kuke.LoginRegisterChoiceActivity"
+        android:label="LoginRegisterChoiceActivity" />
+    <activity
+        android:id="@+id/signInActivity"
+        android:name="com.example.lumi_kuke.SignInActivity"
+        android:label="activity_sign_in"
+        tools:layout="@layout/activity_sign_in" />
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.lumi_kuke.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+</navigation>
