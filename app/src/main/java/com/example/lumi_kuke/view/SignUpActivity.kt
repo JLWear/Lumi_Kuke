@@ -1,4 +1,4 @@
-package com.example.lumi_kuke
+package com.example.lumi_kuke.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -35,6 +35,7 @@ class SignUpActivity : AppCompatActivity() {
                         if (it.isSuccessful) {
                             val intent = Intent(this, SignInActivity::class.java)
                             startActivity(intent)
+                            finish()
                         } else {
                             Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
 

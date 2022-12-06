@@ -7,21 +7,21 @@
 
     <activity
         android:id="@+id/signUpActivity"
-        android:name="com.example.lumi_kuke.SignUpActivity"
+        android:name="com.example.lumi_kuke.view.SignUpActivity"
         android:label="activity_sign_up"
         tools:layout="@layout/activity_sign_up" />
     <activity
         android:id="@+id/loginRegisterChoiceActivity2"
-        android:name="com.example.lumi_kuke.LoginRegisterChoiceActivity"
+        android:name="com.example.lumi_kuke.view.LoginRegisterChoiceActivity"
         android:label="LoginRegisterChoiceActivity" />
     <activity
         android:id="@+id/signInActivity"
-        android:name="com.example.lumi_kuke.SignInActivity"
+        android:name="com.example.lumi_kuke.view.SignInActivity"
         android:label="activity_sign_in"
         tools:layout="@layout/activity_sign_in" />
     <activity
         android:id="@+id/mainActivity"
-        android:name="com.example.lumi_kuke.MainActivity"
+        android:name="com.example.lumi_kuke.view.MainActivity"
         android:label="activity_main"
         tools:layout="@layout/activity_main" />
 </navigation>

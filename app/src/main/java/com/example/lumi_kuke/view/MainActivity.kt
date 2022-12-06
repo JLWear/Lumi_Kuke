@@ -1,9 +1,10 @@
-package com.example.lumi_kuke
+package com.example.lumi_kuke.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import com.example.lumi_kuke.R
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
