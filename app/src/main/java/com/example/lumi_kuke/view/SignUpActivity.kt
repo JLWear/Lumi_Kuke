@@ -24,9 +24,9 @@ class SignUpActivity : AppCompatActivity() {
             startActivity(intent)
         }
         binding.button.setOnClickListener {
-            val email = binding.emailEt.text.toString()
-            val pass = binding.passET.text.toString()
-            val confirmPass = binding.confirmPassEt.text.toString()
+            val email = binding.email.text.toString()
+            val pass = binding.pass.text.toString()
+            val confirmPass = binding.confirmPass.text.toString()
 
             if (email.isNotEmpty() && pass.isNotEmpty() && confirmPass.isNotEmpty()) {
                 if (pass == confirmPass) {
@@ -42,10 +42,10 @@ class SignUpActivity : AppCompatActivity() {
                         }
                     }
                 } else {
-                    Toast.makeText(this, "Password is not matching", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Password not equal to ConfirmPassword", Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Toast.makeText(this, "Empty Fields Are not Allowed !!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Empty Fields", Toast.LENGTH_SHORT).show()
 
             }
         }

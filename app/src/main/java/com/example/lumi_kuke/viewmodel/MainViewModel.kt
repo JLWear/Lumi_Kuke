@@ -1,4 +1,6 @@
 package com.example.lumi_kuke.viewmodel
 
-class MainViewModel {
+import androidx.lifecycle.ViewModel
+
+class MainViewModel : ViewModel() {
 }

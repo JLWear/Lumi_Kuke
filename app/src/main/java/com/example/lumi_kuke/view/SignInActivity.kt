@@ -24,8 +24,8 @@ class SignInActivity : AppCompatActivity() {
         }
 
         binding.button.setOnClickListener {
-            val email = binding.emailEt.text.toString()
-            val pass = binding.passET.text.toString()
+            val email = binding.email.text.toString()
+            val pass = binding.pass.text.toString()
 
             if (email.isNotEmpty() && pass.isNotEmpty()) {
 
@@ -40,7 +40,7 @@ class SignInActivity : AppCompatActivity() {
                     }
                 }
             } else {
-                Toast.makeText(this, "Empty Fields Are not Allowed !!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Empty Fields", Toast.LENGTH_SHORT).show()
 
             }
         }

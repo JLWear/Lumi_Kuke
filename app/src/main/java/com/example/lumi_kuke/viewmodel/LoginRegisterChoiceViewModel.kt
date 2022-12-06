@@ -1,4 +1,6 @@
 package com.example.lumi_kuke.viewmodel
 
-class LoginRegisterChoiceViewModel {
+import androidx.lifecycle.ViewModel
+
+class LoginRegisterChoiceViewModel : ViewModel() {
 }

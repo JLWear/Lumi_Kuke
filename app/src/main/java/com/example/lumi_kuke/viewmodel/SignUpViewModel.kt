@@ -1,4 +1,6 @@
 package com.example.lumi_kuke.viewmodel
 
-class SignUpViewModel {
+import androidx.lifecycle.ViewModel
+
+class SignUpViewModel : ViewModel() {
 }
