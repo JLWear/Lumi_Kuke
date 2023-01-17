@@ -13,6 +13,7 @@ class SignUpActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.hide();
 
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -38,11 +39,10 @@ class SignUpActivity : AppCompatActivity() {
                             finish()
                         } else {
                             Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
-
                         }
                     }
                 } else {
-                    Toast.makeText(this, "Password not equal to ConfirmPassword", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Password not equal to retype Password", Toast.LENGTH_SHORT).show()
                 }
             } else {
                 Toast.makeText(this, "Empty Fields", Toast.LENGTH_SHORT).show()

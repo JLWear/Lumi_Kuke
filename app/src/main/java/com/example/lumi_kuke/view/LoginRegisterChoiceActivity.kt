@@ -13,6 +13,7 @@ class LoginRegisterChoiceActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_loginregisterchoice)
+        supportActionBar?.hide();
 
         val buttonRegister = findViewById<Button>(R.id.button_register)
         buttonRegister.setOnClickListener {

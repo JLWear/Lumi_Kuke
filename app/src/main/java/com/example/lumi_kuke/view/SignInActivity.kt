@@ -15,6 +15,7 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySignInBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide();
 
 
         firebaseAuth = FirebaseAuth.getInstance()
