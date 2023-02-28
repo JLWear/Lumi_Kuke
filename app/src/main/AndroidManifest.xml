@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -25,9 +27,9 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity android:name=".view.SignUpActivity"></activity>
-        <activity android:name=".view.SignInActivity"></activity>
-        <activity android:name=".view.MainActivity"></activity>
+        <activity android:name=".view.SignUpActivity" />
+        <activity android:name=".view.SignInActivity" />
+        <activity android:name=".view.MainActivity" />
     </application>
 
 </manifest>
