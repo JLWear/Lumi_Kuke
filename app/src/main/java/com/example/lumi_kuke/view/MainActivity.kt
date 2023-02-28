@@ -1,17 +1,27 @@
 package com.example.lumi_kuke.view
 
+import RecipesAdapter
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
+import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.lumi_kuke.R
 import com.example.lumi_kuke.data.RecipesApi
 import com.example.lumi_kuke.di.NetworkModule
 import com.example.lumi_kuke.model.Recipe
 import com.example.lumi_kuke.util.Constants.Companion.API_KEY
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import okhttp3.*
 import retrofit2.Call
 import retrofit2.Response
@@ -20,15 +30,51 @@ class MainActivity : AppCompatActivity(), androidx.appcompat.widget.SearchView.O
 
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var searchView: androidx.appcompat.widget.SearchView
+    private lateinit var recyclerView: RecyclerView
+    var layoutManager: LinearLayoutManager? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        firebaseAuth = FirebaseAuth.getInstance()
+        run("https://api.spoonacular.com/recipes/complexSearch?apiKey=6d613aabfeb546e28a50b925bd121a07&query=")
+
+        searchView = findViewById(R.id.searchView)
+        searchView.setOnQueryTextListener(this)
+        recyclerView = findViewById(R.id.recycler)
+        recyclerView!!.setHasFixedSize(true)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        layoutManager = LinearLayoutManager(this)
+        recyclerView!!.layoutManager = layoutManager
+
+    }
 
     override fun onQueryTextSubmit(query: String): Boolean {
-        //val value = searchView.query.toString()
         val networkModule = NetworkModule.provideApiService(RecipesApi::class.java)
         val call = networkModule.getRecipes(query, true, true, API_KEY)
         call.enqueue(object : retrofit2.Callback<Recipe> {
             override fun onResponse(call: Call<Recipe>, response: Response<Recipe>) {
                 if (response.isSuccessful) {
                     Log.e("success", response.body().toString())
+                    query.let {
+                        CoroutineScope(Dispatchers.IO).launch {
+                            withContext(Dispatchers.Main) {
+                                recyclerView.adapter = RecipesAdapter(response.body()?.results!!.map { result ->
+                                    com.example.lumi_kuke.model.Result(
+                                        title = result.title,
+                                        image = result.image,
+                                        id = result.id,
+                                        cookingMinutes = result.cookingMinutes,
+                                        extendedIngredients = result.extendedIngredients,
+                                        sourceUrl = result.sourceUrl,
+                                        summary = result.summary,
+                                        vegan = result.vegan,
+                                        vegetarian = result.vegetarian,
+                                    )
+                                })
+                            }
+                        }
+                    }
                 }
             }
 
@@ -42,53 +88,6 @@ class MainActivity : AppCompatActivity(), androidx.appcompat.widget.SearchView.O
 
     override fun onQueryTextChange(newText: String): Boolean {
         return true
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        firebaseAuth = FirebaseAuth.getInstance()
-        run("https://api.spoonacular.com/recipes/complexSearch?apiKey=6d613aabfeb546e28a50b925bd121a07&query=")
-
-        searchView = findViewById(R.id.searchView)
-        searchView.setOnQueryTextListener(this)
-//        searchView.setOnClickListener {
-//            val value = searchView.query.toString()
-//            val networkModule = NetworkModule.provideApiService(RecipesApi::class.java)
-//            val call = networkModule.getRecipes(value)
-//            call.enqueue(object : retrofit2.Callback<Recipe> {
-//                override fun onResponse(call: Call<Recipe>, response: Response<Recipe>) {
-//                    if (response.isSuccessful) {
-//                        Log.e("success", response.body().toString())
-//                    }
-//                }
-//
-//                override fun onFailure(call: retrofit2.Call<Recipe>, t: Throwable) {
-//                    t.printStackTrace()
-//                    Log.e("error", t.message.toString())
-//                }
-//            })
-//        }
-
-//        val networkModule = NetworkModule.provideApiService(RecipesApi::class.java)
-//        val call = networkModule.getRecipes()
-
-//        val button = findViewById<Button>(R.id.button_request)
-//        button.setOnClickListener {
-//            call.enqueue(object : retrofit2.Callback<Recipe> {
-//                override fun onResponse(call: Call<Recipe>, response: Response<Recipe>) {
-//                    if (response.isSuccessful) {
-//                        Log.e("success", response.body().toString())
-//                    }
-//                }
-//
-//                override fun onFailure(call: retrofit2.Call<Recipe>, t: Throwable) {
-//                    t.printStackTrace()
-//                    Log.e("error", t.message.toString())
-//                }
-//            })
-//        }
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
