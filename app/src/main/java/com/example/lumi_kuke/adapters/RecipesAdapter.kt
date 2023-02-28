@@ -1,11 +1,31 @@
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.lumi_kuke.R
+import com.example.lumi_kuke.model.Result
+
+//class RecipesAdapter(context: Context, private val results: List<Result>) : ArrayAdapter<Result>(context, 0, results) {
+//
+//    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+//
+//        val holder: ViewHolder = convertView?.tag as ViewHolder
+//
+//        val result = results[position]
+//        holder.titleTextView.text = result.title
+//
+//        return convertView
+//    }
+//
+//    private class ViewHolder {
+//        lateinit var titleTextView: TextView
+//    }
+//}
 
 class RecipesAdapter(private val recipes: List<com.example.lumi_kuke.model.Result>) :
     RecyclerView.Adapter<RecipesAdapter.RecipeViewHolder>() {
@@ -33,3 +53,29 @@ class RecipesAdapter(private val recipes: List<com.example.lumi_kuke.model.Resul
         return recipes.size
     }
 }
+
+//
+//import com.example.lumi_kuke.adapters.RecipeViewHolder
+//import com.example.lumi_kuke.databinding.CardBinding
+//import com.example.lumi_kuke.model.Recipe
+//
+//class RecipesAdapter(
+//    private val recipes: List<Recipe>,
+//    private val result: List<com.example.lumi_kuke.model.Result>
+//)
+//    : RecyclerView.Adapter<RecipeViewHolder>()
+//{
+//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecipeViewHolder
+//    {
+//        val from = LayoutInflater.from(parent.context)
+//        val binding = CardBinding.inflate(from, parent, false)
+//        return RecipeViewHolder(binding)
+//    }
+//
+//    override fun onBindViewHolder(holder: RecipeViewHolder, position: Int)
+//    {
+//        holder.bindRecipes(result[position])
+//    }
+//
+//    override fun getItemCount(): Int = recipes.size
+//}

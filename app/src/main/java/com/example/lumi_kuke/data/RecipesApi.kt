@@ -13,4 +13,8 @@ interface RecipesApi {
                    @Query("addRecipeInformation") addRecipeInformation: Boolean = true,
                    @Query("fillIngredients") fillIngredients: Boolean = true,
                    @Query("apiKey") apiKey: String): Call<Recipe>
+
+    @GET("/recipes/random")
+    fun getRandomRecipes(@Query("number") number: Number = 0,
+                   @Query("apiKey") apiKey: String): Call<Recipe>
 }
